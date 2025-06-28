@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: #333;
+    margin-top: 40px;
+  }
+
+  form {
+    background: #fff;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+  }
+
+  input[type="text"]:focus {
+    border-color: #4a90e2;
+    outline: none;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+
+  button:hover {
+    background-color: #357ab7;
+  }
+
+  #contenido {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+  }
+  .todos {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  background: #fff;
+}
+.todos span.completado {
+  color: green;
+}
+.todos span.pendiente {
+  color: red;
+}
+
+</style>
+
+  </head>
+  <body>
+    <h1>todos</h1>
+    <form id="miFormulario">
+      <label>Título:</label>
+      <input type="text" name="title" required /><br />
+
+      <label>Tarea:</label>
+      <input type="text" name="task" required /><br />
+
+      <label>¿Completado?</label>
+      <input type="checkbox" name="done" /><br />
+
+      <button type="submit">Enviar tarea</button>
+    </form>
+    <div id="contenido"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
