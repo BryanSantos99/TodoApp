@@ -1,4 +1,4 @@
-fetch("http://127.0.0.1:8000/todos/")
+fetch("https://todo-api-gjik.onrender.com/todos/")
   .then((res) => res.json())
   .then((data) => {
     // data es un array, usamos map para recorrerlo
@@ -23,7 +23,7 @@ document.getElementById("miFormulario").addEventListener("submit", function (e) 
     done: formData.get("done") === "on"
   };
 
-  fetch("http://127.0.0.1:8000/todos/", {
+  fetch("https://todo-api-gjik.onrender.com/todos/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
