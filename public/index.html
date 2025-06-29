@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Todos</h1>
+    <form id="miFormulario">
+      <label>Título:</label>
+      <input type="text" name="title" required /><br />
+
+      <label>Tarea:</label>
+      <input type="text" name="task" required /><br />
+
+      <label>¿Completado?</label>
+      <input type="checkbox" name="done" /><br />
+
+      <button type="submit">Enviar tarea</button>
+    </form>
+    <div id="contenido"></div>
+    <script src="../script.js"></script>
+  </body>
+</html>
