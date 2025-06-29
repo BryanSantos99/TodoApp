@@ -1,7 +1,7 @@
 // Función para crear una tarjeta
 function crearTarjeta(datos) {
   const tarjeta = document.createElement("div");
-  tarjeta.id = "todo";
+  tarjeta.id = "todos";
 
   const titulo = document.createElement("h3");
   titulo.textContent = datos.title;
@@ -10,7 +10,7 @@ function crearTarjeta(datos) {
 
   const check = document.createElement("span");
   check.textContent = datos.done ? "Completado" : "Pendiente";
-
+  check.id = datos.done?"completado":"pendiente";
 
   titulo.textContent = datos.title;
   descripcion.textContent = datos.task;
@@ -18,7 +18,7 @@ function crearTarjeta(datos) {
 
   titulo.className = "title";
   descripcion.className = "description";
-  check.id = "isDone";
+  
 
   // Agregar al DOM
   tarjeta.appendChild(titulo);

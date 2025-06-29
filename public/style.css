@@ -13,60 +13,240 @@ body {
     margin-top: 40px;
   }
 
-  form {
-    background: #fff;
-    padding: 30px;
-    margin-top: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
+ /* Contenedor del formulario */
+#miFormulario {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
 
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #555;
-  }
+/* Efecto de brillo sutil */
+#miFormulario::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
 
-  input[type="text"],
-  input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-  }
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-  input[type="text"]:focus {
-    border-color: #4a90e2;
-    outline: none;
-  }
+/* Asegurar que el contenido esté encima del efecto */
+#miFormulario > * {
+  position: relative;
+  z-index: 1;
+}
 
-  input[type="checkbox"] {
-    margin-right: 8px;
-    padding: 1rem;
-    margin: 1rem;
-  }
+/* Etiquetas */
+#miFormulario label {
+  display: block;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
 
-  button {
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-  }
+#miFormulario label:first-of-type {
+  margin-top: 0;
+}
 
-  button:hover {
-    background-color: #357ab7;
+/* Inputs de texto */
+#miFormulario input[type="text"] {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 1rem;
+  color: #333;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#miFormulario input[type="text"]:focus {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Contenedor para checkbox personalizado */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Ocultar checkbox original */
+#miFormulario input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+/* Checkbox personalizado */
+.checkbox-custom {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Checkmark */
+.checkbox-custom::after {
+  content: '✓';
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+/* Estado checked */
+#miFormulario input[type="checkbox"]:checked + .checkbox-custom {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  border-color: #4CAF50;
+  transform: scale(1.1);
+}
+
+#miFormulario input[type="checkbox"]:checked + .checkbox-custom::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hover en checkbox */
+.checkbox-container:hover .checkbox-custom {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Botón de envío */
+#miFormulario button[type="submit"] {
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto hover del botón */
+#miFormulario button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+#miFormulario button[type="submit"]:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto de ondas en el botón */
+#miFormulario button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+#miFormulario button[type="submit"]:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Remover los <br> y usar espaciado CSS */
+#miFormulario br {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #miFormulario {
+    padding: 30px 20px;
+    margin: 10px;
+    max-width: none;
   }
+  
+  #miFormulario input[type="text"] {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+  
+  #miFormulario button[type="submit"] {
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* Animación de entrada */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#miFormulario {
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Estados de validación */
+#miFormulario input[type="text"]:invalid {
+  border-left: 4px solid #FF6B6B;
+}
+
+#miFormulario input[type="text"]:valid {
+  border-left: 4px solid #4CAF50;
+}
 
   #contenido {
     margin-top: 30px;
@@ -76,16 +256,170 @@ body {
     font-size: 18px;
     color: #333;
   }
-  .todos {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px 0;
-  background: #fff;
+  /* Tarjeta principal */
+#todos {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 16px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
-.todos span.completado {
-  color: green;
+
+/* Efecto hover para la tarjeta */
+#todos:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
-.todos span.pendiente {
-  color: red;
+
+/* Efecto de brillo sutil */
+#todos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+#todos:hover::before {
+  left: 100%;
+}
+
+/* Título */
+.title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+/* Descripción */
+.description {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+  font-weight: 400;
+}
+
+/* Estado - Completado */
+#completado {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  display: inline-block;
+  position: relative;
+}
+
+#completado::before {
+  content: '✓';
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+/* Estado - Pendiente */
+#pendiente {
+  background: linear-gradient(45deg, #FF6B6B, #ee5a52);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  display: inline-block;
+  position: relative;
+}
+
+#pendiente::before {
+  content: '⏱';
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+/* Variantes de colores para diferentes tarjetas */
+.tarjeta-azul {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.tarjeta-verde {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+}
+
+.tarjeta-naranja {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.tarjeta-purpura {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #todos {
+    padding: 20px;
+    margin: 12px 0;
+  }
+  
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  #completado, #pendiente {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#todos {
+  animation: slideIn 0.4s ease-out;
+}
+
+/* Efecto de pulsación para estados */
+#completado, #pendiente {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
